@@ -6,25 +6,24 @@ on:
   workflow_dispatch:
 
 permissions:
- contents: write
+  contents: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Generate Snake
+      - name: Generate snake animation
         uses: Platane/snk@v3
         with:
           github_user_name: 3Anubhav
           outputs: |
             dist/github-snake.svg?color_snake=8A2BE2&color_dots=140A2E,2E1065,4C1D95,6D28D9,8B5CF6
-            dist/github-snake-dark.svg?palette=github-dark&color_snake=A855F7
 
-      - name: Push to output branch
+      - name: Push snake to output branch
         uses: crazy-max/ghaction-github-pages@v3
         with:
           target_branch: output
